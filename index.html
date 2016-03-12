@@ -1,0 +1,73 @@
+<!doctype html>
+
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8">
+		<title>JSON Reader</title>
+		<link rel="stylesheet" href="style.css">
+
+		<script>
+
+		//making an object of xmlHTTPRequest
+		var xmlhttp = new XMLHttpRequest();
+
+		//defining data file
+		var url = "ColorNameMap.json";
+
+		//opening file (4=request complete) and 200 (OK Response)
+		xmlhttp.onreadystatechange=function() {
+
+		    //calling display function once resource file is found and loaded		
+		    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		        displayFunction(xmlhttp.responseText);
+		    }
+		}
+
+		//opening file using get method
+		xmlhttp.open("GET", url, true);
+
+		//sending read data
+		xmlhttp.send();
+
+
+		//displaying function
+		function displayFunction(response) {
+
+		    //converting JSON object to js object		
+		    var arr = JSON.parse(response);
+
+		    //declaring counter variable
+		    var i;
+
+		    //defining html output
+		    var out = "<li>";
+
+		    for(i = 0; i < arr.length; i++) {
+
+		        out += "<li style='color:"+arr[i].value+"'>" + arr[i].color + "&nbsp;(" + arr[i].value + ") <span style='height:10px;width:10px;background-color:"+arr[i].value+";border-radius:70%;display:inline-block;'></span></li>";
+		    }
+
+		    out += "</li>";
+		    document.getElementById("list1").innerHTML = out;
+		    var block2 = document.getElementById("list2")
+		    block2.innerHTML = out;
+		    block2.scrollTop = block2.scrollHeight;
+		}
+		</script>
+
+		  <!--[if lt IE 9]>
+		  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		  <![endif]-->
+
+	</head>
+
+	<body>
+
+		<ul id="list1"></ul>
+		<ul id="list2"></ul>
+
+	  
+	</body>
+	</html>

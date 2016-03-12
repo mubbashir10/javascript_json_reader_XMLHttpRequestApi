@@ -1,0 +1,26 @@
+body{
+
+	margin:auto;
+	font-family: verdana;
+}
+ul{
+
+	margin-top:5%;
+	margin-left:5%;
+	height:120px;
+	width:250px;
+	overflow-y:scroll;
+}
+ul li{
+
+	list-style: none;
+	font-size:15px;
+	font-weight:bold;
+	margin-bottom:10px;
+
+}
+#list1,#list2{
+
+	border:5px solid #868686;
+	display:inline-block;
+}
